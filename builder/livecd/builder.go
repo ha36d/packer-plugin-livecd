@@ -1,6 +1,4 @@
-//go:generate packer-sdc mapstructure-to-hcl2 -type Config
-
-package scaffolding
+package livecd
 
 import (
 	"context"
@@ -13,7 +11,7 @@ import (
 	"github.com/hashicorp/packer-plugin-sdk/template/config"
 )
 
-const BuilderId = "scaffolding.builder"
+const BuilderId = "packer.builder.livecd"
 
 type Config struct {
 	common.PackerConfig `mapstructure:",squash"`
@@ -29,7 +27,7 @@ func (b *Builder) ConfigSpec() hcldec.ObjectSpec { return b.config.FlatMapstruct
 
 func (b *Builder) Prepare(raws ...interface{}) (generatedVars []string, warnings []string, err error) {
 	err = config.Decode(&b.config, &config.DecodeOpts{
-		PluginType:  "packer.builder.scaffolding",
+		PluginType:  "packer.builder.livecd",
 		Interpolate: true,
 	}, raws...)
 	if err != nil {

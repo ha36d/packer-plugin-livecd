@@ -1,13 +1,13 @@
 ---
 description: >
-  The scaffolding post-processor is used to export Packer Scaffolding builds.
-page_title: Scaffolding - Post-Processors
-nav_title: Scaffolding
+  The livecd post-processor is used to export Packer livecd builds.
+page_title: livecd - Post-Processors
+nav_title: livecd
 ---
 
-# Scaffolding
+# livecd
 
-Type: `scaffolding`
+Type: `livecd`
 
 <!--
   Include a short description about the post-processor. This is a good place
@@ -15,7 +15,7 @@ Type: `scaffolding`
   be helpful to a user. See https://www.packer.io/docs/provisioners/null
 -->
 
-The scaffolding post-processor is used to export Packer Scaffolding builds.
+The livecd post-processor is used to export Packer livecd builds.
 
 
 <!-- Post-Processor Configuration Fields -->
@@ -44,15 +44,15 @@ The scaffolding post-processor is used to export Packer Scaffolding builds.
 
 
 ```hcl
- source "scaffolding" "example" {
+ source "livecd" "example" {
    mock = "jay"
  }
 
  build {
-   sources = ["source.scaffolding.example"]
+   sources = ["source.livecd.example"]
 
-   post-processor "scaffolding" {
-     mock = "builds/scaffolding.box"
+   post-processor "livecd" {
+     mock = "builds/livecd.box"
    }
  }
 ```

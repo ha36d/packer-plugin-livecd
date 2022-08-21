@@ -1,4 +1,4 @@
-package scaffolding
+package livecd
 
 import (
 	_ "embed"
@@ -15,10 +15,10 @@ import (
 //go:embed test-fixtures/template.pkr.hcl
 var testProvisionerHCL2Basic string
 
-// Run with: PACKER_ACC=1 go test -count 1 -v ./provisioner/scaffolding/provisioner_acc_test.go  -timeout=120m
-func TestAccScaffoldingProvisioner(t *testing.T) {
+// Run with: PACKER_ACC=1 go test -count 1 -v ./provisioner/livecd/provisioner_acc_test.go  -timeout=120m
+func TestAcclivecdProvisioner(t *testing.T) {
 	testCase := &acctest.PluginTestCase{
-		Name: "scaffolding_provisioner_basic_test",
+		Name: "livecd_provisioner_basic_test",
 		Setup: func() error {
 			return nil
 		},
@@ -26,7 +26,7 @@ func TestAccScaffoldingProvisioner(t *testing.T) {
 			return nil
 		},
 		Template: testProvisionerHCL2Basic,
-		Type:     "scaffolding-my-provisioner",
+		Type:     "livecd-my-provisioner",
 		Check: func(buildCommand *exec.Cmd, logfile string) error {
 			if buildCommand.ProcessState != nil {
 				if buildCommand.ProcessState.ExitCode() != 0 {

@@ -1,40 +1,40 @@
 packer {
   required_plugins {
-    scaffolding = {
+    livecd = {
       version = ">=v0.1.0"
-      source  = "github.com/hashicorp/scaffolding"
+      source  = "github.com/hashicorp/livecd"
     }
   }
 }
 
-source "scaffolding-my-builder" "foo-example" {
+source "livecd-my-builder" "foo-example" {
   mock = local.foo
 }
 
-source "scaffolding-my-builder" "bar-example" {
+source "livecd-my-builder" "bar-example" {
   mock = local.bar
 }
 
 build {
   sources = [
-    "source.scaffolding-my-builder.foo-example",
+    "source.livecd-my-builder.foo-example",
   ]
 
-  source "source.scaffolding-my-builder.bar-example" {
+  source "source.livecd-my-builder.bar-example" {
     name = "bar"
   }
 
-  provisioner "scaffolding-my-provisioner" {
-    only = ["scaffolding-my-builder.foo-example"]
+  provisioner "livecd-my-provisioner" {
+    only = ["livecd-my-builder.foo-example"]
     mock = "foo: ${local.foo}"
   }
 
-  provisioner "scaffolding-my-provisioner" {
-    only = ["scaffolding-my-builder.bar"]
+  provisioner "livecd-my-provisioner" {
+    only = ["livecd-my-builder.bar"]
     mock = "bar: ${local.bar}"
   }
 
-  post-processor "scaffolding-my-post-processor" {
+  post-processor "livecd-my-post-processor" {
     mock = "post-processor mock-config"
   }
 }
