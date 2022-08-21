@@ -1,4 +1,4 @@
-package scaffolding
+package livecd
 
 // packersdk.Artifact implementation
 type Artifact struct {

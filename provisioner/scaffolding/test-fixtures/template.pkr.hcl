@@ -7,7 +7,7 @@ build {
     "source.null.basic-example"
   ]
 
-  provisioner "scaffolding-my-provisioner" {
+  provisioner "livecd-my-provisioner" {
     mock = "my-mock-config"
   }
 }
